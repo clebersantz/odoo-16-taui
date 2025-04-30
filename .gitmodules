@@ -50,4 +50,3 @@
 	path = addons_oca/purchase-workflow
 	url = https://github.com/OCA/purchase-workflow.git
 	branch = 16.0
-
