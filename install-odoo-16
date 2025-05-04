@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ODOO_VERSION="16.0"
-ODOO_USER="odoo"
-ODOO_HOME="/opt/odoo"
+ODOO_USER="odoo16"
+ODOO_HOME="/opt/odoo/odoo16"
 ODOO_CONF="/etc/odoo.conf"
 ODOO_PORT=8069
 ODOO_VENV="$ODOO_HOME/venv"
