@@ -4,28 +4,25 @@ ODOO_VERSION="16.0"
 ODOO_USER="odoo16"
 ODOO_ROOT="/opt/odoo16"
 ODOO_HOME="$ODOO_ROOT/odoo"
-ODOO_OCA="$ODOO_ROOT/addons"
+ODOO_OCA="$ODOO_ROOT/addons_oca"
 ODOO_VENV="$ODOO_ROOT/venv"
 ODOO_CONF="/etc/odoo.conf"
 ODOO_PORT=8069
 
-echo "===> Atualizando pacotes"
-sudo apt update && sudo apt upgrade -y
-
-echo "===> Instalando dependências básicas"
-sudo apt install -y software-properties-common curl
-
 echo "===> Adicionando PPA do Python 3.9 (deadsnakes)"
 sudo add-apt-repository -y ppa:deadsnakes/ppa
-sudo apt update
-sudo apt install -y python3.9 python3.9-venv python3.9-dev
 
-echo "===> Instalando pacotes do sistema"
-sudo apt install -y git build-essential wget \
+
+
+echo "===> Instalando dependências básicas"
+sudo apt install -y software-properties-common curl \
+python3.9 python3.9-venv python3.9-dev \
+git build-essential wget \
 libxslt-dev libzip-dev libldap2-dev libsasl2-dev \
 libjpeg-dev zlib1g-dev libpq-dev libxml2-dev libffi-dev \
 libjpeg8-dev liblcms2-dev libblas-dev libatlas-base-dev \
 supervisor postgresql
+
 
 echo "===> Criando usuário $ODOO_USER"
 sudo useradd -m -d $ODOO_ROOT -U -r -s /bin/bash $ODOO_USER
@@ -64,7 +61,7 @@ REPOS=(
   server-ux
   bank-statement-import
   purchase-workflow
-  account_bank_statement_import
+  bank-statement-import
   account-payment
 )
 
@@ -83,7 +80,8 @@ for repo in "${REPOS[@]}"; do
 done
 
 echo "===> Instalando pacotes Python adicionais com versões fixas"
-sudo -u $ODOO_USER $ODOO_VENV/bin/pip install "lxml==5.1.0" "pyOpenSSL==23.2.0" "cryptography==41.0.7"
+sudo -u $ODOO_USER $ODOO_VENV/bin/pip install "signxml==3.3.0" "lxml==5.1.0" "pyOpenSSL==23.2.0" "cryptography==41.0.7" "urllib3==1.26.18"
+
 
 # Monta o addons_path com os caminhos dos repositórios clonados
 ADDONS_PATHS="$ODOO_HOME/addons"
