@@ -73,6 +73,18 @@ for repo in "${REPOS[@]}"; do
   sudo -u $ODOO_USER git clone --depth 1 -b $ODOO_VERSION https://github.com/OCA/$repo.git
 done
 
+echo "===> Instalando requirements.txt dos repositórios OCA (se existirem)"
+for repo in "${REPOS[@]}"; do
+  REQ_FILE="$ODOO_OCA/$repo/requirements.txt"
+  if [ -f "$REQ_FILE" ]; then
+    echo "===> Instalando dependências de $repo"
+    sudo -u $ODOO_USER $ODOO_VENV/bin/pip install -r "$REQ_FILE"
+  fi
+done
+
+echo "===> Instalando pacotes Python adicionais com versões fixas"
+sudo -u $ODOO_USER $ODOO_VENV/bin/pip install "lxml==5.1.0" "pyOpenSSL==23.2.0" "cryptography==41.0.7"
+
 # Monta o addons_path com os caminhos dos repositórios clonados
 ADDONS_PATHS="$ODOO_HOME/addons"
 for repo in "${REPOS[@]}"; do
