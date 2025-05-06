@@ -80,7 +80,7 @@ for repo in "${REPOS[@]}"; do
 done
 
 echo "===> Instalando pacotes Python adicionais com versões fixas"
-sudo -u $ODOO_USER $ODOO_VENV/bin/pip install "signxml==3.2.2" "lxml==5.1.0" "pyOpenSSL==23.2.0" "cryptography==41.0.7" "urllib3==1.26.18"
+sudo -u $ODOO_USER $ODOO_VENV/bin/pip install "signxml==3.2.2" "lxml==4.9.3" "pyOpenSSL==23.2.0" "cryptography==41.0.7" "urllib3==1.26.18"
 
 
 # Monta o addons_path com os caminhos dos repositórios clonados
