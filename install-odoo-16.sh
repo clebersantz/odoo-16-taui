@@ -63,6 +63,7 @@ REPOS=(
   purchase-workflow
   bank-statement-import
   account-payment
+  knowledge
 )
 
 for repo in "${REPOS[@]}"; do
