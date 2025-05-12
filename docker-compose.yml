@@ -26,8 +26,7 @@ services:
       - ./config/odoo.conf:/etc/odoo/odoo.conf
       - ./data/filestore:/var/lib/odoo
       - ./logs/odoo:/var/log/odoo
-      - ./addons:/opt/odoo/custom-addons
-      - ./odoo:/opt/odoo
+      - ./custom-addons:/opt/odoo/custom-addons
     expose:
       - "8069"
       - "8072"
