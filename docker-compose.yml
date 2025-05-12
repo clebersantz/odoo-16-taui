@@ -15,7 +15,7 @@ services:
   odoo16_01:
     build: .
     depends_on:
-      - db
+      - postgres13
     restart: unless-stopped
     env_file: myenvfile.env
     environment:
