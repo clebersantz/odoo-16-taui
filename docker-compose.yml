@@ -1,5 +1,5 @@
 services:
-  odoo:
+  odoo16:
     image: odoo:16.0
     env_file: myenvfile.env
     depends_on:
