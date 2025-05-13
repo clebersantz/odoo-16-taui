@@ -24,7 +24,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/odoo.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/odoo.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/proxy_params:/etc/nginx/proxy_params:ro
       
 volumes:
   data:
