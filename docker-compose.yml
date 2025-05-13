@@ -26,7 +26,16 @@ services:
     volumes:
       - ./nginx/odoo.conf:/etc/nginx/conf.d/default.conf:ro
       - ./nginx/proxy_params:/etc/nginx/proxy_params:ro
+
+
+  portainer:
+    image: portainer/portainer-ce
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    restart: unless-stopped
       
 volumes:
   data:
   db:
+  portainer_data:
